@@ -30,8 +30,8 @@ Your server is running.
 
 > If everything is OK, you should see `Started`
 > when requesting on http://localhost:3000.
-> Six entries also must be existing in your user
-> table, in a database named forest_sti.
+> Six entries also must be existing in your `user`
+> table, in a database named `forest_sti`.
 
 #### Steps to reproduce
 
