@@ -1,0 +1,264 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - db/**/*
+    - bin/*
+    - vendor/**/*
+    - Gemfile.lock
+    - Rakefile
+    - app/services/seed/service.rb
+  TargetRubyVersion: 2.5.1
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    "default": "()"
+    "%i": "[]"
+    "%w": "[]"
+
+Style/RescueStandardError:
+  Exclude:
+    - lib/tasks/*
+
+Lint/UriEscapeUnescape:
+  Enabled: false
+
+Lint/SafeNavigationWithEmpty:
+  Enabled: false
+
+Layout/EmptyLinesAroundArguments:
+  Exclude:
+    - lib/tasks/*
+
+Style/FormatStringToken:
+  Exclude:
+    - lib/tasks/*
+
+Style/RaiseArgs:
+  Exclude:
+    - "app/graphql/query_type.rb"
+
+Metrics/AbcSize:
+  Max: 60
+  Exclude:
+    - "app/graphql/users/validations.rb"
+    - "spec/graphql/freelancer_projects_spec.rb"
+    - "app/services/dump/anonymizer.rb"
+    - "app/controllers/api/v1/typeform_projects_controller.rb"
+    - "app/controllers/forest/users_controller.rb"
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - "lib/tasks/*"
+
+Metrics/PerceivedComplexity:
+  Max: 100
+
+Metrics/ParameterLists:
+  Max: 6
+
+Metrics/ClassLength:
+  Max: 500
+
+Metrics/CyclomaticComplexity:
+  Max: 17
+  Exclude:
+    - app/controllers/api/v1/trello_cards_controller.rb
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/support/*"
+    - "spec/support/graphql/*"
+
+Metrics/MethodLength:
+  Max: 40
+  Exclude:
+    - "app/serializers/**/**/**"
+    - "spec/support/factories.rb"
+    - "spec/support/graphql/*"
+    - "app/graphql/forms/service.rb"
+    - "app/services/email/service.rb"
+    - "spec/graphql/freelancer_projects_spec.rb"
+    - "app/graphql/projects/types/by_state.rb"
+    - "app/services/slack/service.rb"
+    - "app/services/dump/anonymizer.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "**/routes.rb"
+    - "**/**/*.rake"
+    - "app/graphql/**/*.rb"
+    - "app/admin/**"
+    - "config/environments/*.rb"
+    # Ignore algolia search block
+    - "app/models/case.rb"
+    - "app/models/portfolio.rb"
+    - "app/services/dump/anonymizer.rb"
+
+# Ignore Forest Admin syntax
+Style/ClassAndModuleChildren:
+  Exclude:
+    - app/controllers/forest/*
+    - lib/forest_liana/collections/*
+    - "app/graphql/**/*.rb"
+    - "app/services/graphql_auth/mutation_service.rb"
+    - "app/services/graphql_auth/query_service.rb"
+
+# Ignore GraphQL DateTime type syntax
+Style/DateTime:
+  Exclude:
+    - app/graphql/types/date_time.rb
+
+Style/TrivialAccessors:
+  Exclude:
+    - app/graphql/types/date_time.rb
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
+
+Naming/PredicateName:
+  Exclude:
+    - "app/graphql/chats/type.rb"
+    - "app/services/form_validator/service.rb"
+    - "app/services/validator/*.rb"
+    - "app/graphql/freelancer_relationships/member_type.rb"
+    - "app/graphql/projects/types/viewer.rb"
+
+Style/OptionalArguments:
+  Exclude:
+    - "app/services/validator/rule.rb"
+
+Style/HashEachMethods:
+  Enabled: true
+  Exclude:
+    - "lib/tasks/import_translations.rake"
+    - "lib/tasks/update_customer_families.rake"
+    - "lib/tasks/update_skills_associations.rake"
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/ExtraSpacing:
+  # When true, allows most uses of extra spacing if the intent is to align
+  # things with the previous or next line, not counting empty lines or comment
+  # lines.
+  AllowForAlignment: true
+
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Layout/EmptyLinesAroundClassBody:
+  EnforcedStyle: empty_lines
+  SupportedStyles:
+    - empty_lines
+    - no_empty_lines
+
+Layout/EmptyLinesAroundModuleBody:
+  EnforcedStyle: no_empty_lines
+  SupportedStyles:
+    - empty_lines
+    - no_empty_lines
+
+Layout/EmptyLinesAroundBlockBody:
+  Description: "Keeps track of empty lines around block bodies."
+  Enabled: false
+
+Layout/EmptyLines:
+  Description: "Don't use several empty lines in a row."
+  Enabled: true
+
+Layout/EndOfLine:
+  Description: 'Use Unix-style line endings.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#crlf'
+  Enabled: true
+
+# Indent one level for follow-up lines
+# https://github.com/troessner/reek/issues/553
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Style/WordArray:
+  Description: 'Use %w or %W for arrays of words.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-w'
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Naming/MethodParameterName:
+  Exclude:
+    - app/services/validator/*.rb
+    - app/models/timeline_activity.rb
+
+Security/Open:
+  Exclude:
+    - app/graphql/users/service.rb
+    - app/models/project.rb
+    - lib/tasks/move_old_s3_files.rake
+
+Style/ConditionalAssignment:
+  Exclude:
+    - spec/services/email/unread_messages_spec.rb
+
+Style/CombinableLoops:
+  Exclude:
+    - lib/tasks/import_translations.rake
+
+Naming/VariableNumber:
+  Exclude:
+    - spec/services/email/new_projects_notifications_spec.rb
+    - spec/graphql/users_edit_spec.rb
+    - spec/graphql/projects_spec.rb
+
+Rails/UnknownEnv:
+  Environments:
+    - cypress
+    - test
+    - development
+    - staging
+    - production
+    -
+Rails/FilePath:
+  Exclude:
+    - config/initializers/locale.rb
+
+Rails/Exit:
+  Exclude:
+    - app/services/dump/service.rb
+
+Rails/Date:
+  Exclude:
+    - app/services/email/service.rb
+
+Rails/Output:
+  Exclude:
+    - app/services/dump/service.rb
+    - app/services/dump/anonymizer.rb
+    - app/services/database/service.rb
+    - app/services/authentication/json_web_token.rb
+
+Layout/HashAlignment:
+  Exclude:
+    - lib/forest_liana/collections/user.rb
+    - lib/forest_liana/collections/project.rb
+    - lib/forest_liana/collections/typeform_project.rb
+
