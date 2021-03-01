@@ -20,6 +20,7 @@ Where `XXX` extends `YYY`, and `YYY` extends `ActiveRecord::Base`
 
 #### Project Setup
 
+- Download dependencies by running `bundle install`
 - In `config/database.yml` file, check your local database configuration
 - Your Forest credentials must be placed in `config/initializers/forest_liana.rb` file
 - Then run `rails db:drop db:create db:migrate db:seed`
