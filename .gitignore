@@ -39,3 +39,6 @@
 
 # Ignore SQL database schema
 /db/structure.sql
+
+# Forest Admin
+.forestadmin-schema.json
